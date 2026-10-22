@@ -164,16 +164,15 @@ footer { padding: 40px 0 50px; color: var(--mute); font-size: 14px; }
     </ul>
   </div>
   <div class="card">
-    <span class="tag">amoCRM</span><span class="tag">воронки</span><span class="tag">роботы</span><span class="tag">API</span><span class="tag wip">в работе</span>
+    <span class="tag">amoCRM</span><span class="tag">воронки</span><span class="tag">роботы</span><span class="tag">API</span>
     <h3>amoCRM для онлайн-школы иллюстрации «Чёрный кот»</h3>
     <ul>
-      <li>Требования и схема продаж: заявка → пробный урок → оплата → ученик → продление.</li>
-      <li>Воронки, поля сделок и контактов, причины отказа, права ролей.</li>
-      <li>Роботы: задачи менеджеру, напоминания ученикам, смена этапов.</li>
-      <li>Заявки с сайта сразу в CRM, без потерь и дублей.</li>
-      <li>Чек-лист приёмки, тестирование перед запуском, инструкция для менеджеров.</li>
+      <li>Схема продаж: заявка → пробный урок → счёт → оплата, отдельная воронка «Ученики» для продлений.</li>
+      <li>Поля сделки и контакта, причины отказа, роботы на этапах: задачи менеджеру с текстом и сроком.</li>
+      <li>Поля, воронки и 60 демо-заявок созданы через API amoCRM, заявки с сайта приходят автоматически.</li>
     </ul>
-    <div class="links"><a href="https://sonyfrid.github.io/landings/kurs/">Сайт школы</a></div>
+    <div class="shots"><img src="img/crm_pipeline.jpg" alt="Воронка" loading="lazy"><img src="img/crm_lead.jpg" alt="Карточка сделки" loading="lazy"><img src="img/crm_robots.jpg" alt="Роботы" loading="lazy"></div>
+    <div class="links"><a href="https://sonyfrid.github.io/landings/kurs/">Сайт школы</a><a href="https://github.com/sonyfrid/portfolio/tree/main/crm-n8n">Описание и сценарий</a></div>
   </div>
 </section>
 
@@ -181,14 +180,16 @@ footer { padding: 40px 0 50px; color: var(--mute); font-size: 14px; }
   <h2>Интеграции и автоматизация</h2>
   <p class="lead">Связываю сервисы через API и вебхуки и автоматизирую рутину.</p>
   <div class="card">
-    <span class="tag">n8n</span><span class="tag">amoCRM API</span><span class="tag">Webhooks</span><span class="tag">ИИ</span><span class="tag">Telegram</span><span class="tag wip">в работе</span>
+    <span class="tag">n8n</span><span class="tag">amoCRM API</span><span class="tag">Webhooks</span><span class="tag">ИИ</span><span class="tag">Telegram</span>
     <h3>Заявки с сайта в amoCRM через n8n</h3>
     <ul>
-      <li>Сайт → n8n → amoCRM API: контакт и сделка с заполненными полями, проверка дублей по телефону.</li>
-      <li>ИИ оценивает, насколько заявка «горячая», и пишет короткую сводку в сделку.</li>
-      <li>Уведомление менеджеру в Telegram, строка в Google Таблицу для отчёта.</li>
-      <li>Повторы и алерт, если CRM не ответила.</li>
+      <li>Сайт → n8n → amoCRM API: нормализация телефона, поиск дублей, сделка со всеми полями.</li>
+      <li>Локальная ИИ-модель оценивает заявку 0–100 и пишет менеджеру сводку.</li>
+      <li>«🔥 Горячая заявка» в Telegram со ссылкой на сделку, повторы при сбоях.</li>
+      <li>При отладке решил 4 реальные проблемы: IPv6 на Windows, потерю связи данных в n8n, ответ hal+json, разметку Telegram.</li>
     </ul>
+    <video src="img/crm_form.mp4" autoplay muted loop playsinline style="width:100%;border-radius:12px;border:1px solid var(--line);margin-top:14px"></video>
+    <div class="links"><a href="https://github.com/sonyfrid/portfolio/tree/main/crm-n8n">Сценарий и README</a></div>
   </div>
   <div class="card">
     <h3>Сбор данных из 230+ источников</h3>
