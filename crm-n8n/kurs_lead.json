@@ -1,0 +1,261 @@
+{
+ "id": "0bXKDbhFHd5UuZzH",
+ "name": "Чёрный кот: заявка с сайта → amoCRM → Telegram",
+ "nodes": [
+  {
+   "parameters": {
+    "httpMethod": "POST",
+    "path": "kurs-lead",
+    "responseMode": "onReceived",
+    "options": {}
+   },
+   "name": "Заявка с сайта",
+   "type": "n8n-nodes-base.webhook",
+   "typeVersion": 2,
+   "position": [
+    0,
+    300
+   ],
+   "webhookId": "kurs-lead"
+  },
+  {
+   "parameters": {
+    "jsCode": "\n// Приводим заявку к одному виду и сразу готовим запрос к ИИ\nconst b = $input.first().json.body || $input.first().json;\nconst digits = String(b.phone || '').replace(/\\D/g, '');\nlet phone = digits;\nif (digits.length === 11 && (digits[0] === '8' || digits[0] === '7')) phone = '+7' + digits.slice(1);\nelse if (digits.length === 10) phone = '+7' + digits;\nelse if (digits) phone = '+' + digits;\nif (!b.name || !phone) throw new Error('Заявка без имени или телефона: ' + JSON.stringify(b));\nconst tariffs = {'сам': 465225, 'с автором': 465227, 'наставник': 465229};\nconst prices = {'сам': 9900, 'с автором': 19900, 'наставник': 39900};\nconst levels = {'с нуля': 465241, 'рисую для себя': 465243, 'уже есть заказы': 465245};\nconst t = String(b.tariff || '').trim().toLowerCase();\nconst l = String(b.level || '').trim().toLowerCase();\nconst n = {\n  name: String(b.name).trim(), phone, phone10: phone.replace(/\\D/g, '').slice(-10),\n  telegram: String(b.telegram || '').trim(), city: String(b.city || '').trim(), goal: String(b.goal || '').trim(),\n  tariff: t, tariff_enum: tariffs[t] || null, price: prices[t] || 0, level: l, level_enum: levels[l] || null,\n};\nn.ai_body = {\n  model: 'qwen2.5:7b', stream: false, format: 'json', options: {temperature: 0},\n  messages: [\n    {role: 'system', content: 'Ты помогаешь отделу продаж онлайн-школы иллюстрации. Оцени заявку от 0 до 100: насколько человек готов купить курс (чёткая цель, выбран тариф, есть Telegram, конкретика = выше). Ответь строго JSON: {\"score\": число, \"summary\": \"1-2 предложения для менеджера: кто это, что хочет, с чего начать разговор\"}'},\n    {role: 'user', content: `Имя: ${n.name}. Тариф: ${t || 'не выбран'}. Уровень: ${l || 'не указан'}. Цель: ${n.goal || 'не указана'}. Telegram: ${n.telegram ? 'есть' : 'нет'}.`},\n  ],\n};\nreturn [{json: n}];\n"
+   },
+   "name": "Нормализация",
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2,
+   "position": [
+    200,
+    300
+   ]
+  },
+  {
+   "parameters": {
+    "method": "POST",
+    "url": "http://127.0.0.1:11434/api/chat",
+    "sendBody": true,
+    "specifyBody": "json",
+    "jsonBody": "={{ JSON.stringify($json.ai_body) }}",
+    "options": {
+     "timeout": 180000
+    }
+   },
+   "name": "ИИ-оценка",
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2,
+   "position": [
+    400,
+    300
+   ],
+   "continueOnFail": true,
+   "alwaysOutputData": true
+  },
+  {
+   "parameters": {
+    "jsCode": "\n// Ответ ИИ + данные заявки. ИИ не ответил — заявка всё равно идёт дальше\nconst n = $('Нормализация').first().json;\nlet ai = {score: 0, summary: 'ИИ не ответил'};\ntry { ai = JSON.parse($input.first().json.message.content); } catch (e) {}\nreturn [{json: {...n, ai_score: Math.max(0, Math.min(100, Number(ai.score) || 0)), ai_summary: String(ai.summary || '')}}];\n"
+   },
+   "name": "Данные + ИИ",
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2,
+   "position": [
+    600,
+    300
+   ]
+  },
+  {
+   "parameters": {
+    "authentication": "genericCredentialType",
+    "genericAuthType": "httpHeaderAuth",
+    "url": "https://alexandrikuskos.amocrm.ru/api/v4/contacts",
+    "sendQuery": true,
+    "queryParameters": {
+     "parameters": [
+      {
+       "name": "query",
+       "value": "={{ $json.phone10 }}"
+      }
+     ]
+    },
+    "options": {
+     "response": {
+      "response": {
+       "neverError": true
+      }
+     }
+    }
+   },
+   "name": "Поиск контакта",
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2,
+   "position": [
+    800,
+    300
+   ],
+   "alwaysOutputData": true,
+   "retryOnFail": true,
+   "maxTries": 3,
+   "waitBetweenTries": 2000
+  },
+  {
+   "parameters": {
+    "jsCode": "\n// Сделка: если контакт с таким телефоном уже есть — привязываем его, а не создаём дубль\nconst n = $('Данные + ИИ').first().json;\n// amoCRM отвечает application/hal+json — n8n отдаёт такой ответ строкой в json.data\nlet found = $input.first().json;\nif (typeof found.data === 'string') { try { found = JSON.parse(found.data); } catch (e) { found = {}; } }\nconst existing = found && found._embedded && found._embedded.contacts && found._embedded.contacts[0];\nconst cf = [\n  {field_id: 798999, values: [{enum_id: 465231}]},\n  {field_id: 799007, values: [{value: n.ai_score}]},\n  {field_id: 799009, values: [{value: n.ai_summary.slice(0, 1000)}]},\n];\nif (n.tariff_enum) cf.push({field_id: 798997, values: [{enum_id: n.tariff_enum}]});\nif (n.level_enum) cf.push({field_id: 799001, values: [{enum_id: n.level_enum}]});\nif (n.goal) cf.push({field_id: 799003, values: [{value: n.goal}]});\nconst contact = existing ? {id: existing.id} : {\n  first_name: n.name,\n  custom_fields_values: [\n    {field_code: 'PHONE', values: [{value: n.phone, enum_code: 'MOB'}]},\n    ...(n.telegram ? [{field_id: 799017, values: [{value: n.telegram}]}] : []),\n    ...(n.city ? [{field_id: 799019, values: [{value: n.city}]}] : []),\n  ],\n};\nconst lead = {\n  name: (n.tariff ? n.tariff[0].toUpperCase() + n.tariff.slice(1) : 'Заявка') + ': ' + n.name,\n  price: n.price, pipeline_id: 11434054, status_id: 89554250, custom_fields_values: cf,\n  _embedded: {contacts: [contact], tags: [{name: 'сайт'}, ...(existing ? [{name: 'повторная заявка'}] : [])]},\n};\nreturn [{json: {body: [lead], repeat: !!existing}}];\n"
+   },
+   "name": "Сборка сделки",
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2,
+   "position": [
+    1000,
+    300
+   ]
+  },
+  {
+   "parameters": {
+    "authentication": "genericCredentialType",
+    "genericAuthType": "httpHeaderAuth",
+    "method": "POST",
+    "url": "https://alexandrikuskos.amocrm.ru/api/v4/leads/complex",
+    "sendBody": true,
+    "specifyBody": "json",
+    "jsonBody": "={{ JSON.stringify($json.body) }}",
+    "options": {}
+   },
+   "name": "Создать сделку в amoCRM",
+   "type": "n8n-nodes-base.httpRequest",
+   "typeVersion": 4.2,
+   "position": [
+    1200,
+    300
+   ],
+   "retryOnFail": true,
+   "maxTries": 3,
+   "waitBetweenTries": 2000
+  },
+  {
+   "parameters": {
+    "jsCode": "\n// Текст для менеджера: горячая (70+) или обычная, ссылка на созданную сделку\nconst n = $('Данные + ИИ').first().json;\nconst repeat = $('Сборка сделки').first().json.repeat;\nconst lead = $input.first().json;\nconst id = lead.id || (lead._embedded && lead._embedded.leads && lead._embedded.leads[0].id) || '';\nconst text = [\n  (n.ai_score >= 70 ? '🔥 Горячая заявка' : '📝 Новая заявка') + (repeat ? ' (повторная)' : ''),\n  '',\n  `${n.name}, ${n.phone}` + (n.telegram ? `, ${n.telegram}` : ''),\n  `Тариф: ${n.tariff || 'не выбран'}` + (n.city ? ` · ${n.city}` : ''),\n  `ИИ-оценка: ${n.ai_score}/100`,\n  n.ai_summary,\n  '',\n  'https://alexandrikuskos.amocrm.ru/leads/detail/' + id,\n].join('\\n');\n// HTML-режим Telegram: экранируем &, <, > (в Markdown ломались ники с подчёркиванием)\nreturn [{json: {text: text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')}}];\n"
+   },
+   "name": "Текст сообщения",
+   "type": "n8n-nodes-base.code",
+   "typeVersion": 2,
+   "position": [
+    1400,
+    300
+   ]
+  },
+  {
+   "parameters": {
+    "chatId": "YOUR_CHAT_ID",
+    "text": "={{ $json.text }}",
+    "additionalFields": {
+     "appendAttribution": false,
+     "parse_mode": "HTML"
+    }
+   },
+   "name": "Сообщение менеджеру",
+   "type": "n8n-nodes-base.telegram",
+   "typeVersion": 1.2,
+   "position": [
+    1600,
+    300
+   ],
+   "retryOnFail": true,
+   "maxTries": 3,
+   "waitBetweenTries": 2000
+  }
+ ],
+ "connections": {
+  "Заявка с сайта": {
+   "main": [
+    [
+     {
+      "node": "Нормализация",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Нормализация": {
+   "main": [
+    [
+     {
+      "node": "ИИ-оценка",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "ИИ-оценка": {
+   "main": [
+    [
+     {
+      "node": "Данные + ИИ",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Данные + ИИ": {
+   "main": [
+    [
+     {
+      "node": "Поиск контакта",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Поиск контакта": {
+   "main": [
+    [
+     {
+      "node": "Сборка сделки",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Сборка сделки": {
+   "main": [
+    [
+     {
+      "node": "Создать сделку в amoCRM",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Создать сделку в amoCRM": {
+   "main": [
+    [
+     {
+      "node": "Текст сообщения",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  },
+  "Текст сообщения": {
+   "main": [
+    [
+     {
+      "node": "Сообщение менеджеру",
+      "type": "main",
+      "index": 0
+     }
+    ]
+   ]
+  }
+ },
+ "settings": {
+  "executionOrder": "v1"
+ },
+ "active": false
+}
