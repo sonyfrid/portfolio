@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Сони Фридмо: портфолио</title>
+<meta name="description" content="QA и AI QA, техподдержка L2, внедрение CRM, интеграции и автоматизация, сайты">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --bg: #f6f7f5; --card: #fff; --ink: #1d2126; --mute: #5d646b; --line: #e3e6e2; --acc: #0f7a4f; --acc2: #e7f4ee; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: Manrope, Arial, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.55; font-size: 16px; }
+a { color: var(--acc); }
+.wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+header { padding: 48px 0 28px; display: flex; gap: 26px; align-items: center; }
+header img { width: 120px; height: 120px; border-radius: 18px; object-fit: cover; flex: none; }
+h1 { font-size: 38px; line-height: 1.1; font-weight: 800; }
+.roles { color: var(--acc); font-weight: 700; margin-top: 6px; }
+.ct { margin-top: 8px; color: var(--mute); font-size: 14.5px; }
+.ct a { margin-right: 14px; white-space: nowrap; }
+nav { position: sticky; top: 0; z-index: 5; background: rgba(246,247,245,.94); backdrop-filter: blur(6px); border-bottom: 1px solid var(--line); }
+nav .wrap { display: flex; gap: 6px; overflow-x: auto; padding-top: 10px; padding-bottom: 10px; }
+nav a { flex: none; text-decoration: none; color: var(--ink); font-weight: 600; font-size: 14.5px; padding: 7px 13px; border-radius: 999px; }
+nav a:hover { background: var(--acc2); color: var(--acc); }
+section { padding: 44px 0 8px; scroll-margin-top: 56px; }
+h2 { font-size: 26px; font-weight: 800; }
+.lead { color: var(--mute); margin: 6px 0 18px; max-width: 760px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px 24px; margin-bottom: 16px; }
+.card h3 { font-size: 19px; font-weight: 800; }
+.tag { display: inline-block; font-size: 12.5px; font-weight: 700; color: var(--acc); background: var(--acc2); border-radius: 999px; padding: 2px 10px; margin: 0 6px 6px 0; }
+.tag.wip { color: #8a5a00; background: #fbf0d9; }
+.card p, .card li { color: #2c3238; }
+.card ul { padding-left: 18px; margin-top: 6px; } .card li { margin: 3px 0; }
+.links { margin-top: 10px; font-weight: 700; } .links a { margin-right: 16px; }
+.shots { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 16px; }
+.shots img { width: 100%; border-radius: 12px; border: 1px solid var(--line); display: block; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+.grid .card { margin: 0; padding: 0; overflow: hidden; }
+.grid .card img { width: 100%; display: block; aspect-ratio: 3/2; object-fit: cover; }
+.grid .card div { padding: 14px 18px 16px; }
+.inc h3 { margin-bottom: 4px; }
+.inc dl { display: grid; grid-template-columns: 150px 1fr; gap: 6px 14px; margin-top: 10px; }
+.inc dt { font-weight: 700; color: var(--mute); }
+.nums { display: flex; gap: 26px; flex-wrap: wrap; margin: 14px 0 4px; }
+.nums b { display: block; font-size: 26px; font-weight: 800; color: var(--acc); line-height: 1.1; }
+.nums span { font-size: 13.5px; color: var(--mute); }
+footer { padding: 40px 0 50px; color: var(--mute); font-size: 14px; }
+@media (max-width: 640px) {
+  header { flex-direction: column; align-items: flex-start; padding-top: 30px; }
+  h1 { font-size: 30px; }
+  .shots { grid-template-columns: 1fr 1fr; }
+  .inc dl { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <img src="photo.jpg" alt="Сони Фридмо">
+  <div>
+    <h1>Сони Фридмо</h1>
+    <div class="roles">QA и AI QA · Техподдержка L2 · Внедрение CRM · Интеграции · Сайты</div>
+    <div class="ct">Больше 3 лет в IT, финтех и цифровые продукты. Нови-Сад, работаю удалённо.</div>
+    <div class="ct"><a href="https://t.me/fridmo_sony">Telegram</a><a href="mailto:alexandrikuskos@gmail.com">alexandrikuskos@gmail.com</a><a href="https://www.linkedin.com/in/sonyfridmo">LinkedIn</a><a href="https://github.com/sonyfrid">GitHub</a></div>
+  </div>
+</header>
+</div>
+
+<nav><div class="wrap">
+  <a href="#product">Свой продукт</a><a href="#qa">QA и AI QA</a><a href="#support">Поддержка</a><a href="#crm">Внедрение CRM</a><a href="#integrations">Интеграции</a><a href="#web">Сайты</a>
+</div></nav>
+
+<div class="wrap">
+
+<section id="product">
+  <h2>Свой продукт: сервис поиска работы в Telegram</h2>
+  <p class="lead">Сделал сам от идеи до поддержки: собрал требования, продумал логику и дизайн, написал, протестировал, запустил на сервере и веду пользователей.</p>
+  <div class="card">
+    <span class="tag">Python</span><span class="tag">PostgreSQL</span><span class="tag">Telegram Bot + Mini App</span><span class="tag">Linux, systemd</span><span class="tag">pytest</span><span class="tag">ИИ</span>
+    <div class="nums">
+      <div><b>30+</b><span>сайтов-источников</span></div>
+      <div><b>~200</b><span>Telegram-каналов</span></div>
+      <div><b>10 000+</b><span>вакансий в день</span></div>
+      <div><b>~580</b><span>автотестов</span></div>
+    </div>
+    <ul>
+      <li>Собирает вакансии из десятков источников через API и парсинг, убирает дубли, рекламу и мошенников.</li>
+      <li>Подбор под человека: профессия, ключевые слова, исключения, зарплата, опыт, формат работы.</li>
+      <li>ИИ пишет сопроводительное письмо под конкретную вакансию.</li>
+      <li>Мониторинг источников, алерты о сбоях, логи, ночные бэкапы, автоподъём на сервере.</li>
+    </ul>
+    <div class="links"><a href="https://t.me/Jobradar_kittybot">Открыть в Telegram</a><a href="https://github.com/sonyfrid/job-aggregator-showcase">Описание на GitHub</a></div>
+    <div class="shots"><img src="img/app-feed.jpg" alt="Лента вакансий" loading="lazy"><img src="img/app-search-dark.jpg" alt="Настройка поиска" loading="lazy"><img src="img/app-vacancy.jpg" alt="Карточка вакансии" loading="lazy"></div>
+  </div>
+</section>
+
+<section id="qa">
+  <h2>QA и AI QA</h2>
+  <p class="lead">Тестирую веб, мобильные приложения и API, автоматизирую на Playwright, проверяю качество ответов ИИ-моделей.</p>
+  <div class="card">
+    <span class="tag">AI QA</span><span class="tag">LLM</span><span class="tag">Python</span><span class="tag">Ollama</span>
+    <h3>Тестирование ИИ-ассистента поддержки магазина</h3>
+    <p>Чат-бот отвечает покупателям по базе знаний. Написал 36 тест-кейсов в 7 группах: факты, выдумки (галлюцинации), prompt injection и утечка системного промпта, персональные данные, тон и темы вне магазина, язык ответа, стабильность. Проверки: автоматические правила на Python и второй ИИ в роли судьи. Сравнил две версии промпта: «на скорую руку» и исправленную по найденным багам.</p>
+    <ul>
+      <li>Нашёл, что первая версия выдумывает характеристики товаров и условия доставки, которых нет в базе знаний.</li>
+      <li>Нашёл, что ИИ-судья сам ошибается и путает «не упомянуто» с «выдумано»: его нельзя использовать без ручной проверки выборки.</li>
+    </ul>
+    <div class="links"><a href="https://github.com/sonyfrid/ai-qa-support-bot">Код, кейсы и отчёт</a></div>
+  </div>
+  <div class="card">
+    <span class="tag">Playwright</span><span class="tag">TypeScript</span><span class="tag">API</span>
+    <h3>Автотесты для финтех-приложения</h3>
+    <p>Фреймворк UI- и API-тестов: Page Object, проверки ключевых сценариев, API-тесты.</p>
+    <div class="links"><a href="https://github.com/sonyfrid/fintech-qa-automation">Репозиторий</a><a href="https://github.com/sonyfrid/petstore-tests">API-тесты PetStore</a></div>
+  </div>
+</section>
+
+<section id="support">
+  <h2>Техподдержка L2: разборы инцидентов</h2>
+  <p class="lead">Три реальных сбоя в Telegram-сервисе с фоновыми задачами, который я веду. Как нашёл причину, что починил и как сделал, чтобы не повторилось.</p>
+  <div class="card inc">
+    <h3>Сборщик данных молча вставал на 15-18 часов</h3>
+    <dl>
+      <dt>Симптом</dt><dd>Уведомления из 190 источников из 200 приходили с опозданием почти на сутки. Ошибок нет, процесс «живой».</dd>
+      <dt>Как нашёл</dt><dd>Посмотрел не на процесс, а на данные: время последней проверки каждого источника в базе застряло на одном моменте.</dd>
+      <dt>Причина</dt><dd>Дневной лимит внешнего API на поиск источников. Кэш сохранялся только при штатном выключении, поэтому после каждого перезапуска все источники искались заново и съедали лимит, а ожидание блокировало весь цикл.</dd>
+      <dt>Исправление</dt><dd>Свой кэш, который пишется сразу. Долгое ожидание пропускает один источник, а не останавливает все. Алерт, если данные старше 30 минут.</dd>
+    </dl>
+  </div>
+  <div class="card inc">
+    <h3>Сервис лежал 10 часов, а логов не было</h3>
+    <dl>
+      <dt>Симптом</dt><dd>Бот не отвечал, уведомления не приходили. Узнал от пользователя.</dd>
+      <dt>Как нашёл</dt><dd>По базе: последняя активность пользователей и записи всех источников оборвались в одну минуту.</dd>
+      <dt>Причина</dt><dd>Восстановить не удалось: логи писались только в консоль. Честно записал «причина неизвестна» и чинил наблюдаемость.</dd>
+      <dt>Исправление</dt><dd>Логи в файлы с ротацией, crash-лог со стеком при падении, команда /health, переезд на сервер с автоподъёмом процессов, алерты.</dd>
+    </dl>
+  </div>
+  <div class="card inc">
+    <h3>Кнопки бота зависали у всех пользователей</h3>
+    <dl>
+      <dt>Симптом</dt><dd>Ответ на нажатие через 10-30 секунд, иногда «бот не отвечает».</dd>
+      <dt>Как нашёл</dt><dd>Сопоставил время жалоб со временем фоновых задач: совпадало с массовым пересчётом подбора.</dd>
+      <dt>Причина</dt><dd>Тяжёлые вычисления шли в том же процессе, который отвечает пользователям. Потоки не помогли из-за GIL.</dd>
+      <dt>Исправление</dt><dd>Интерфейс и фоновые задачи разделены на два процесса, пересчёт в пуле процессов.</dd>
+    </dl>
+  </div>
+</section>
+
+<section id="crm">
+  <h2>Внедрение CRM</h2>
+  <p class="lead">Помогаю бизнесу настроить CRM под свои процессы и реально начать в ней работать.</p>
+  <div class="card">
+    <span class="tag">amoCRM</span><span class="tag">воронки</span><span class="tag">роботы</span><span class="tag">API</span><span class="tag wip">в работе</span>
+    <h3>amoCRM для онлайн-школы иллюстрации «Чёрный кот»</h3>
+    <ul>
+      <li>Требования и схема продаж: заявка → пробный урок → оплата → ученик → продление.</li>
+      <li>Воронки, поля сделок и контактов, причины отказа, права ролей.</li>
+      <li>Роботы: задачи менеджеру, напоминания ученикам, смена этапов.</li>
+      <li>Заявки с сайта сразу в CRM, без потерь и дублей.</li>
+      <li>Чек-лист приёмки, тестирование перед запуском, инструкция для менеджеров.</li>
+    </ul>
+    <div class="links"><a href="https://sonyfrid.github.io/landings/kurs/">Сайт школы</a></div>
+  </div>
+</section>
+
+<section id="integrations">
+  <h2>Интеграции и автоматизация</h2>
+  <p class="lead">Связываю сервисы через API и вебхуки и автоматизирую рутину.</p>
+  <div class="card">
+    <span class="tag">n8n</span><span class="tag">amoCRM API</span><span class="tag">Webhooks</span><span class="tag">ИИ</span><span class="tag">Telegram</span><span class="tag wip">в работе</span>
+    <h3>Заявки с сайта в amoCRM через n8n</h3>
+    <ul>
+      <li>Сайт → n8n → amoCRM API: контакт и сделка с заполненными полями, проверка дублей по телефону.</li>
+      <li>ИИ оценивает, насколько заявка «горячая», и пишет короткую сводку в сделку.</li>
+      <li>Уведомление менеджеру в Telegram, строка в Google Таблицу для отчёта.</li>
+      <li>Повторы и алерт, если CRM не ответила.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <h3>Сбор данных из 230+ источников</h3>
+    <p>В своём продукте связал 30+ сайтов, их API и около 200 Telegram-каналов в один поток с дедупликацией, классификацией и уведомлениями. <a href="#product">Подробнее выше</a>.</p>
+  </div>
+</section>
+
+<section id="web">
+  <h2>Сайты</h2>
+  <p class="lead">Пять лендингов с анимацией: дизайн, вёрстка, адаптив, формы. По образованию художник-дизайнер.</p>
+  <div class="grid">
+    <a class="card" href="https://sonyfrid.github.io/landings/shop/"><img src="img/shop.jpg" alt="NORDA" loading="lazy"><div><b>NORDA</b><br>Магазин верхней одежды</div></a>
+    <a class="card" href="https://sonyfrid.github.io/landings/barber/"><img src="img/barber.jpg" alt="Сталь" loading="lazy"><div><b>Сталь</b><br>Мужская парикмахерская</div></a>
+    <a class="card" href="https://sonyfrid.github.io/landings/ramen/"><img src="img/ramen.jpg" alt="Кумо" loading="lazy"><div><b>Кумо</b><br>Раменная и кофейня</div></a>
+    <a class="card" href="https://sonyfrid.github.io/landings/remont/"><img src="img/remont.jpg" alt="Квадрат" loading="lazy"><div><b>Квадрат</b><br>Ремонт квартир</div></a>
+    <a class="card" href="https://sonyfrid.github.io/landings/kurs/"><img src="img/kurs.jpg" alt="Чёрный кот" loading="lazy"><div><b>Чёрный кот</b><br>Онлайн-курс иллюстрации</div></a>
+  </div>
+</section>
+
+</div>
+<footer><div class="wrap">Сони Фридмо · <a href="https://t.me/fridmo_sony">Telegram</a> · <a href="mailto:alexandrikuskos@gmail.com">alexandrikuskos@gmail.com</a></div></footer>
+</body>
+</html>
