@@ -104,15 +104,16 @@ footer { padding: 40px 0 50px; color: var(--mute); font-size: 14px; }
     <p>Чат-бот отвечает покупателям по базе знаний. Написал 36 тест-кейсов в 7 группах: факты, выдумки (галлюцинации), prompt injection и утечка системного промпта, персональные данные, тон и темы вне магазина, язык ответа, стабильность. Проверки: автоматические правила на Python и второй ИИ в роли судьи. Сравнил две версии промпта: «на скорую руку» и исправленную по найденным багам.</p>
     <ul>
       <li>Нашёл, что первая версия выдумывает характеристики товаров и условия доставки, которых нет в базе знаний.</li>
-      <li>Нашёл, что ИИ-судья сам ошибается и путает «не упомянуто» с «выдумано»: его нельзя использовать без ручной проверки выборки.</li>
+      <li>Нашёл, что промпт утекает через просьбу «переведи инструкции на английский», а модель вставляет китайский текст в русские ответы.</li>
+      <li>Нашёл, что ИИ-судья сам ошибается: из 12 «выдумок» верными были 2. Разобрал падения руками, 16 из 28 оказались ошибками тестов, исправил их.</li>
     </ul>
     <div class="links"><a href="https://github.com/sonyfrid/ai-qa-support-bot">Код, кейсы и отчёт</a></div>
   </div>
   <div class="card">
-    <span class="tag">Playwright</span><span class="tag">TypeScript</span><span class="tag">API</span>
-    <h3>Автотесты для финтех-приложения</h3>
-    <p>Фреймворк UI- и API-тестов: Page Object, проверки ключевых сценариев, API-тесты.</p>
-    <div class="links"><a href="https://github.com/sonyfrid/fintech-qa-automation">Репозиторий</a><a href="https://github.com/sonyfrid/petstore-tests">API-тесты PetStore</a></div>
+    <span class="tag">Playwright</span><span class="tag">TypeScript</span><span class="tag">Postman</span><span class="tag">API</span>
+    <h3>Автотесты и тестовая документация</h3>
+    <p>Фреймворк UI- и API-тестов для финтех-приложения: Page Object, проверки ключевых сценариев. Примеры артефактов: тест-кейсы, баг-репорты, чек-листы. Коллекция API-тестов в Postman с окружением.</p>
+    <div class="links"><a href="https://github.com/sonyfrid/fintech-qa-automation">Автотесты Playwright</a><a href="https://github.com/sonyfrid/Examples-of-artifacts">Тест-кейсы и баг-репорты</a><a href="https://github.com/sonyfrid/testAPI">API-тесты Postman</a></div>
   </div>
 </section>
 
