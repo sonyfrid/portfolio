@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Сони Фридмо: субподряд для интеграторов amoCRM и Битрикс24</title>
+<meta name="description" content="Беру интеграции и настройку amoCRM и Битрикс24 на субподряд: оплаты, 1С, сайт, n8n, боты. Кейс: счёт клиенту за 10 секунд вместо нескольких часов">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --bg: #f6f7f5; --card: #fff; --ink: #1d2126; --mute: #5d646b; --line: #e3e6e2; --acc: #0f7a4f; --acc2: #e7f4ee; --warn: #8a5a00; --warn2: #fbf0d9; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Manrope, Arial, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.55; font-size: 16px; }
+a { color: var(--acc); }
+.wrap { max-width: 920px; margin: 0 auto; padding: 0 20px; }
+header { padding: 44px 0 20px; display: flex; gap: 24px; align-items: center; }
+header img { width: 104px; height: 104px; border-radius: 18px; object-fit: cover; flex: none; }
+h1 { font-size: 34px; line-height: 1.15; font-weight: 800; text-wrap: balance; }
+.sub { color: var(--mute); margin-top: 8px; max-width: 640px; }
+.ct { margin-top: 10px; font-weight: 700; font-size: 15px; }
+.ct a { margin-right: 16px; white-space: nowrap; }
+section { padding: 34px 0 6px; }
+h2 { font-size: 24px; font-weight: 800; margin-bottom: 12px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px 24px; margin-bottom: 16px; }
+.nums { display: flex; gap: 30px; flex-wrap: wrap; margin: 4px 0 6px; }
+.nums b { display: block; font-size: 30px; font-weight: 800; color: var(--acc); line-height: 1.1; }
+.nums span { font-size: 14px; color: var(--mute); }
+.flow { overflow-x: auto; margin-top: 14px; }
+.flow svg { min-width: 760px; width: 100%; height: auto; display: block; }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; }
+.cols .card { margin: 0; }
+.card h3 { font-size: 17px; font-weight: 800; margin-bottom: 6px; }
+.card ul { padding-left: 18px; } .card li { margin: 3px 0; color: #2c3238; }
+.steps { counter-reset: s; list-style: none; padding: 0; display: grid; gap: 10px; }
+.steps li { counter-increment: s; display: grid; grid-template-columns: 34px 1fr; gap: 10px; align-items: start; }
+.steps li::before { content: counter(s); width: 28px; height: 28px; border-radius: 50%; background: var(--acc2); color: var(--acc); font-weight: 800; display: grid; place-items: center; }
+.cta { background: var(--acc); color: #fff; border-radius: 16px; padding: 24px; margin: 30px 0 10px; }
+.cta a { color: #fff; font-weight: 800; }
+footer { padding: 26px 0 46px; color: var(--mute); font-size: 14px; }
+@media (max-width: 640px) { header { flex-direction: column; align-items: flex-start; } h1 { font-size: 27px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <img src="photo.jpg" alt="Сони Фридмо">
+  <div>
+    <h1>Беру ваши интеграции и настройку CRM на субподряд</h1>
+    <p class="sub">Сони Фридмо, 3 года в IT. Внедряю amoCRM и Битрикс24 и связываю их с оплатами, 1С, сайтом и мессенджерами. Подключаюсь, когда у вашей команды завал и проект нельзя сдвинуть.</p>
+    <div class="ct"><a href="https://t.me/fridmo_sony">Telegram: @fridmo_sony</a><a href="index.html#crm">Портфолио</a><a href="https://github.com/sonyfrid/portfolio/tree/main/crm-n8n">GitHub</a></div>
+  </div>
+</header>
+
+<section>
+  <h2>Кейс: счёт клиенту за 10 секунд</h2>
+  <div class="card">
+    <p>Четыре компании продавали вручную: счёт и ссылку на оплату готовили часами, а бухгалтерия сверяла платежи вручную. Я перевёл их продажи в CRM и связал её с эквайрингом, онлайн-кассой и 1С.</p>
+    <div class="nums">
+      <div><b>4</b><span>компании перевёл<br>с ручных продаж на CRM</span></div>
+      <div><b>10 сек</b><span>от сделки до счёта<br>и ссылки на оплату</span></div>
+      <div><b>0</b><span>ручных сверок оплат<br>в бухгалтерии</span></div>
+    </div>
+    <div class="flow" aria-label="Схема: сайт, n8n, CRM, эквайринг, 1С">
+      <svg viewBox="0 0 760 170" role="img">
+        <title>Заявка с сайта попадает в CRM, счёт и оплата проходят через эквайринг, статус и документы уходят в 1С</title>
+        <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#0f7a4f"/></marker></defs>
+        <g font-family="Manrope, Arial, sans-serif" font-size="13" fill="#1d2126">
+          <rect x="4" y="50" width="118" height="62" rx="12" fill="#fff" stroke="#e3e6e2"/>
+          <text x="63" y="78" text-anchor="middle" font-weight="800">Сайт, Tilda</text><text x="63" y="97" text-anchor="middle" fill="#5d646b">заявка, форма</text>
+          <rect x="160" y="50" width="118" height="62" rx="12" fill="#e7f4ee" stroke="#0f7a4f"/>
+          <text x="219" y="78" text-anchor="middle" font-weight="800">n8n</text><text x="219" y="97" text-anchor="middle" fill="#5d646b">дубли, проверки</text>
+          <rect x="316" y="50" width="128" height="62" rx="12" fill="#fff" stroke="#e3e6e2"/>
+          <text x="380" y="78" text-anchor="middle" font-weight="800">amoCRM / Б24</text><text x="380" y="97" text-anchor="middle" fill="#5d646b">сделка, счёт</text>
+          <rect x="482" y="50" width="118" height="62" rx="12" fill="#fff" stroke="#e3e6e2"/>
+          <text x="541" y="78" text-anchor="middle" font-weight="800">Эквайринг</text><text x="541" y="97" text-anchor="middle" fill="#5d646b">оплата, чек</text>
+          <rect x="638" y="50" width="118" height="62" rx="12" fill="#fff" stroke="#e3e6e2"/>
+          <text x="697" y="78" text-anchor="middle" font-weight="800">1С</text><text x="697" y="97" text-anchor="middle" fill="#5d646b">документы</text>
+          <g stroke="#0f7a4f" stroke-width="2" fill="none" marker-end="url(#ar)">
+            <line x1="122" y1="81" x2="156" y2="81"/><line x1="278" y1="81" x2="312" y2="81"/>
+            <line x1="444" y1="81" x2="478" y2="81"/><line x1="600" y1="81" x2="634" y2="81"/>
+            <path d="M541,112 C541,150 380,150 380,116"/>
+          </g>
+          <text x="460" y="160" text-anchor="middle" fill="#0f7a4f" font-weight="700">вебхук: оплата пришла, статус сделки меняется сам</text>
+          <text x="380" y="30" text-anchor="middle" fill="#5d646b">менеджер получает горячую заявку в Telegram</text>
+        </g>
+      </svg>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2>Что беру на себя</h2>
+  <div class="cols">
+    <div class="card"><h3>Настройка CRM</h3><ul><li>Воронки, поля, права, причины отказа</li><li>Digital Pipeline и Salesbot в amoCRM</li><li>Роботы и бизнес-процессы в Битрикс24, включая коробку</li><li>Перенос данных из Excel и старых систем</li></ul></div>
+    <div class="card"><h3>Интеграции</h3><ul><li>REST API и вебхуки, сценарии в n8n</li><li>Сайт и Tilda, формы, UTM</li><li>Эквайринг Т-Банк, Сбер, ЮKassa, онлайн-кассы</li><li>Обмен с 1С: Бухгалтерия, УНФ, УТ</li></ul></div>
+    <div class="card"><h3>ИИ и проверка</h3><ul><li>ИИ-оценка лидов и черновики ответов через LLM</li><li>Telegram-боты для заявок и уведомлений</li><li>Проверка интеграций и виджетов перед сдачей клиенту</li><li>Вторая линия поддержки ваших клиентов</li></ul></div>
+  </div>
+</section>
+
+<section>
+  <h2>Как работаем</h2>
+  <div class="card">
+    <ol class="steps">
+      <li><span>Присылаете задачу, которая висит у команды. Оцениваю срок и стоимость до начала работы.</span></li>
+      <li><span>Работаю на тестовом аккаунте или под вашим брендом, клиент общается с вами.</span></li>
+      <li><span>Перед сдачей сам проверяю сценарии: два года работал QA, ошибки ловлю до клиента.</span></li>
+      <li><span>Оплата за задачу или почасово, как удобнее вам.</span></li>
+    </ol>
+  </div>
+  <div class="cta">Есть задача, на которую не хватает рук? Напишите в Telegram <a href="https://t.me/fridmo_sony">@fridmo_sony</a>, оценю в тот же день.</div>
+</section>
+
+<footer>Сони Фридмо · живу в Нови-Саде, Сербия, работаю удалённо по Москве · <a href="index.html">портфолио</a></footer>
+</div>
+</body>
+</html>
