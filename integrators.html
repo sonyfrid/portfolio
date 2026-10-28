@@ -33,6 +33,12 @@ h2 { font-size: 24px; font-weight: 800; margin-bottom: 12px; }
 .steps { counter-reset: s; list-style: none; padding: 0; display: grid; gap: 10px; }
 .steps li { counter-increment: s; display: grid; grid-template-columns: 34px 1fr; gap: 10px; align-items: start; }
 .steps li::before { content: counter(s); width: 28px; height: 28px; border-radius: 50%; background: var(--acc2); color: var(--acc); font-weight: 800; display: grid; place-items: center; }
+.gal { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.gal figure { margin: 0; background: var(--card); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.gal figure.wide { grid-column: 1 / -1; }
+.gal img, .gal video { width: 100%; display: block; }
+.gal figcaption { padding: 10px 14px; font-size: 14px; color: var(--mute); }
+@media (max-width: 640px) { .gal { grid-template-columns: 1fr; } }
 .cta { background: var(--acc); color: #fff; border-radius: 16px; padding: 24px; margin: 30px 0 10px; }
 .cta a { color: #fff; font-weight: 800; }
 footer { padding: 26px 0 46px; color: var(--mute); font-size: 14px; }
@@ -44,8 +50,8 @@ footer { padding: 26px 0 46px; color: var(--mute); font-size: 14px; }
 <header>
   <img src="photo.jpg" alt="Сони Фридмо">
   <div>
-    <h1>Беру ваши интеграции и настройку CRM на субподряд</h1>
-    <p class="sub">Сони Фридмо, 3 года в IT. Внедряю amoCRM и Битрикс24 и связываю их с оплатами, 1С, сайтом и мессенджерами. Подключаюсь, когда у вашей команды завал и проект нельзя сдвинуть.</p>
+    <h1>Внедрение и интеграции amoCRM и Битрикс24: субподряд или в штат</h1>
+    <p class="sub">Сони Фридмо, 3 года в IT. Внедряю amoCRM и Битрикс24 и связываю их с оплатами, 1С, сайтом и мессенджерами. Могу брать задачи, когда у вашей команды завал, или работать у вас постоянно на удалёнке.</p>
     <div class="ct"><a href="https://t.me/fridmo_sony">Telegram: @fridmo_sony</a><a href="index.html#crm">Портфолио</a><a href="https://github.com/sonyfrid/portfolio/tree/main/crm-n8n">GitHub</a></div>
   </div>
 </header>
@@ -88,6 +94,17 @@ footer { padding: 26px 0 46px; color: var(--mute); font-size: 14px; }
 </section>
 
 <section>
+  <h2>Как это выглядит в amoCRM</h2>
+  <p class="sub" style="margin:-4px 0 14px">Мой проект внедрения для онлайн-школы, на демо-данных: заявка с сайта сама попадает в воронку, ИИ оценивает лид и пишет сводку менеджеру.</p>
+  <div class="gal">
+    <figure class="wide"><video src="img/crm_form.mp4" autoplay muted loop playsinline poster="img/crm_lead.jpg"></video><figcaption>Заявка с формы на сайте через n8n сразу появляется в amoCRM</figcaption></figure>
+    <figure class="wide"><img src="img/crm_pipeline.jpg" alt="Воронка продаж в amoCRM: новая заявка, связались, пробный урок, счёт" loading="lazy"><figcaption>Воронка продаж: этапы от заявки до оплаты, 34 сделки</figcaption></figure>
+    <figure><img src="img/crm_lead.jpg" alt="Карточка сделки: ИИ-оценка лида 85 и ИИ-сводка" loading="lazy"><figcaption>Карточка заявки: ИИ-оценка лида 0-100 и сводка для менеджера</figcaption></figure>
+    <figure><img src="img/crm_robots.jpg" alt="Роботы amoCRM создают задачи на каждом этапе" loading="lazy"><figcaption>Роботы ставят менеджеру задачу на каждом этапе</figcaption></figure>
+  </div>
+</section>
+
+<section>
   <h2>Что беру на себя</h2>
   <div class="cols">
     <div class="card"><h3>Настройка CRM</h3><ul><li>Воронки, поля, права, причины отказа</li><li>Digital Pipeline и Salesbot в amoCRM</li><li>Роботы и бизнес-процессы в Битрикс24, включая коробку</li><li>Перенос данных из Excel и старых систем</li></ul></div>
@@ -103,7 +120,7 @@ footer { padding: 26px 0 46px; color: var(--mute); font-size: 14px; }
       <li><span>Присылаете задачу, которая висит у команды. Оцениваю срок и стоимость до начала работы.</span></li>
       <li><span>Работаю на тестовом аккаунте или под вашим брендом, клиент общается с вами.</span></li>
       <li><span>Перед сдачей сам проверяю сценарии: два года работал QA, ошибки ловлю до клиента.</span></li>
-      <li><span>Оплата за задачу или почасово, как удобнее вам.</span></li>
+      <li><span>Оплата за задачу или почасово. Если нужен человек в команду постоянно, готов в штат на удалёнку.</span></li>
     </ol>
   </div>
   <div class="cta">Есть задача, на которую не хватает рук? Напишите в Telegram <a href="https://t.me/fridmo_sony">@fridmo_sony</a>, оценю в тот же день.</div>
