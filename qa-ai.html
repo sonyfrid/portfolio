@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Сони Фридмо: QA Automation и AI QA</title>
+<meta name="description" content="QA Automation на Playwright и Python, тестирование LLM и ИИ-ассистентов, безопасность приложений.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root { --bg: #f6f7f5; --card: #fff; --ink: #1d2126; --mute: #5d646b; --line: #e3e6e2; --acc: #0f7a4f; --acc2: #e7f4ee; --gray2: #eef0ee; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Manrope, Arial, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.55; font-size: 16px; }
+a { color: var(--acc); font-weight: 700; }
+.wrap { max-width: 920px; margin: 0 auto; padding: 0 20px; }
+header { padding: 44px 0 14px; display: flex; gap: 24px; align-items: center; }
+header img { width: 104px; height: 104px; border-radius: 18px; object-fit: cover; flex: none; }
+h1 { font-size: 34px; line-height: 1.15; font-weight: 800; }
+.roles { font-size: 18px; font-weight: 700; color: var(--acc); margin-top: 6px; }
+.sub { color: var(--mute); margin-top: 8px; }
+.ct { margin-top: 10px; font-size: 15px; display: flex; flex-wrap: wrap; gap: 4px 16px; }
+section { padding: 30px 0 4px; }
+h2 { font-size: 24px; font-weight: 800; margin-bottom: 12px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px 24px; margin-bottom: 16px; }
+.card h3 { font-size: 18px; font-weight: 800; margin-bottom: 6px; }
+.card ul { padding-left: 18px; margin-top: 8px; }
+.card li { margin: 4px 0; }
+.tag { display: inline-block; font-size: 12px; font-weight: 700; padding: 3px 9px; border-radius: 99px; background: var(--gray2); color: var(--mute); margin: 0 6px 8px 0; }
+.nums { display: flex; gap: 28px; flex-wrap: wrap; margin: 8px 0; }
+.nums b { display: block; font-size: 28px; font-weight: 800; color: var(--acc); line-height: 1.1; }
+.nums span { font-size: 14px; color: var(--mute); }
+.links { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+.cols .card { margin: 0; }
+footer { padding: 28px 0 46px; color: var(--mute); font-size: 14px; }
+@media (max-width: 640px) { header { flex-direction: column; align-items: flex-start; } h1 { font-size: 28px; } .card { padding: 18px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <img src="photo.jpg" alt="Сони Фридмо">
+  <div>
+    <h1>Сони Фридмо</h1>
+    <div class="roles">QA Automation (Playwright, Python) · AI QA · Безопасность</div>
+    <div class="sub">3 года в IT: финтех, крипта и цифровые продукты. Нови-Сад, работаю удалённо. Английский: B1 разговорный, B2-C1 на чтение.</div>
+    <div class="ct"><a href="https://t.me/fridmo_sony">Telegram: @fridmo_sony</a><a href="https://github.com/sonyfrid">GitHub</a><a href="https://habr.com/ru/articles/1091508/">Статья на Хабре</a></div>
+  </div>
+</header>
+
+<section>
+  <h2>Автотесты на Playwright</h2>
+  <div class="card">
+    <span class="tag">Playwright</span><span class="tag">TypeScript</span><span class="tag">Postman</span><span class="tag">CI/CD</span>
+    <h3>Фреймворк UI- и API-тестов на демо-банке Parabank</h3>
+    <p>E2E-сценарии и API-тесты, Page Object, негативные проверки, запуск в CI, отчёты с видео, скриншотами и трейсами. Плюс коллекция API-тестов в Postman и примеры тест-кейсов и баг-репортов.</p>
+    <div class="links"><a href="https://github.com/sonyfrid/fintech-qa-automation">Автотесты Playwright</a><a href="https://github.com/sonyfrid/testAPI">API-тесты Postman</a><a href="https://github.com/sonyfrid/Examples-of-artifacts">Тест-кейсы и баг-репорты</a></div>
+  </div>
+  <div class="card">
+    <span class="tag">Playwright</span><span class="tag">GitLab</span><span class="tag">Стартап</span>
+    <h3>Стартап «Вот бы!»: тестирование</h3>
+    <p>Проверил сайт как гость и как зарегистрированный пользователь, на компьютере и телефоне. Написал проверки на Playwright: все страницы, ошибки консоли, битые ссылки, формы и скорость. Подготовил отчёт со скриншотами и задачи для команды в GitLab.</p>
+    <div class="links"><a href="https://votby.ru">votby.ru</a></div>
+  </div>
+</section>
+
+<section>
+  <h2>AI QA: тестирование LLM</h2>
+  <div class="card">
+    <span class="tag">LLM</span><span class="tag">Python</span><span class="tag">Ollama</span><span class="tag">Prompt injection</span>
+    <h3>Тестирование ИИ-ассистента поддержки</h3>
+    <p>40 тест-кейсов в 8 группах: факты, галлюцинации, prompt injection, утечка промпта, обходы, персональные данные, тон, язык и стабильность. Сравнил три версии ассистента.</p>
+    <div class="nums"><div><b>30 → 38</b><span>из 40 кейсов</span></div><div><b>13</b><span>багов найдено</span></div><div><b>16 из 28</b><span>падений оказались ошибками тестов</span></div></div>
+    <ul>
+      <li>Промпт утекал через перевод, пересказ, стихи и «повтори текст выше». Закрыл фильтром на выходе.</li>
+      <li>Проверил самого ИИ-судью: из 12 найденных им «выдумок» верными были только 2.</li>
+      <li>Честно оставил два незакрытых кейса и описал, что с ними делать.</li>
+    </ul>
+    <div class="links"><a href="https://github.com/sonyfrid/ai-qa-support-bot">Код, кейсы и отчёт</a></div>
+  </div>
+</section>
+
+<section>
+  <h2>Безопасность приложений и ИИ</h2>
+  <div class="card">
+    <span class="tag">OWASP Top 10</span><span class="tag">OWASP LLM</span><span class="tag">Burp Suite</span><span class="tag">PortSwigger</span>
+    <ul>
+      <li>Инъекция через текст вакансии: модель вставляла фишинговую ссылку в письмо пользователя. Закрыл изоляцией данных и фильтром ссылок.</li>
+      <li>Токен Telegram Mini App с датой из будущего не истекал. Исправил, добавил постоянный тест.</li>
+      <li>Платёжный сервис: вживую проверил поддельные и повторные уведомления и сбои внешних сервисов.</li>
+      <li>11 лаб PortSwigger: Broken Access Control, IDOR, перебор логинов, обход 2FA, сброс пароля.</li>
+    </ul>
+    <div class="links"><a href="security.html">Все находки и разборы</a></div>
+  </div>
+</section>
+
+<section>
+  <h2>Свой продукт с ИИ</h2>
+  <div class="card">
+    <span class="tag">Python</span><span class="tag">PostgreSQL</span><span class="tag">pytest</span><span class="tag">LLM</span>
+    <h3>HunterKitty: поиск работы в Telegram</h3>
+    <div class="nums"><div><b>640+</b><span>автотестов</span></div><div><b>10 000+</b><span>вакансий в день</span></div><div><b>30+</b><span>сайтов и ~200 каналов</span></div></div>
+    <p>Telegram-бот и Mini App: собрал требования, написал, протестировал, запустил и поддерживаю. ИИ фильтрует рекламу и пишет письма, а я проверяю, где модель ошибается.</p>
+    <div class="links"><a href="https://t.me/Jobradar_kittybot">Открыть бота</a><a href="https://github.com/sonyfrid/job-aggregator-showcase">Описание на GitHub</a></div>
+  </div>
+</section>
+
+<section>
+  <h2>Опыт и навыки</h2>
+  <div class="cols">
+    <div class="card"><h3>Опыт</h3><ul><li><b>Laboratoria Modul Soft</b>: Cubux, FinKoper, финансовые продукты</li><li><b>Ilink</b>: Tezro, криптокошелёк, P2P-маркетплейс, мессенджер</li></ul></div>
+    <div class="card"><h3>Автоматизация</h3><ul><li>Playwright, TypeScript, Python, pytest</li><li>Postman, Newman, SQL, REST API</li><li>Kibana, DevTools, Jira, TestRail, Git</li></ul></div>
+    <div class="card"><h3>Понимаю проект целиком</h3><ul><li>JavaScript, TypeScript, Node.js, React</li><li>PostgreSQL, Linux</li><li>До тестирования учился на Fullstack JS</li></ul></div>
+  </div>
+</section>
+
+<footer>Сони Фридмо · Нови-Сад, Сербия · <a href="https://t.me/fridmo_sony">@fridmo_sony</a></footer>
+</div>
+</body>
+</html>
