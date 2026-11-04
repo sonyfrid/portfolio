@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Сони Фридмо: AppSec и LLM</title>
+<meta name="description" content="Портфолио по безопасности веб-приложений и LLM: находки с воспроизведением, оценкой риска, исправлением и ретестом.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root { --bg: #f6f7f5; --card: #fff; --ink: #1d2126; --mute: #5d646b; --line: #e3e6e2; --acc: #0f7a4f; --acc2: #e7f4ee; --red: #b3372f; --red2: #fbeae8; --amb: #8a5a00; --amb2: #fbf0d9; --gray2: #eef0ee; --code: #20252b; }
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: Manrope, Arial, sans-serif; background: var(--bg); color: var(--ink); line-height: 1.55; font-size: 16px; }
+a { color: var(--acc); }
+.wrap { max-width: 920px; margin: 0 auto; padding: 0 20px; }
+header { padding: 48px 0 16px; }
+.eyebrow { font-size: 14px; font-weight: 700; color: var(--acc); margin-bottom: 10px; }
+h1 { font-size: 36px; line-height: 1.15; font-weight: 800; text-wrap: balance; }
+.sub { color: var(--mute); margin-top: 12px; max-width: 680px; }
+.ct { margin-top: 12px; font-weight: 700; font-size: 15px; }
+.ct a { margin-right: 16px; white-space: nowrap; }
+section { padding: 32px 0 4px; }
+h2 { font-size: 24px; font-weight: 800; margin-bottom: 12px; }
+.lead { color: var(--mute); margin-bottom: 16px; max-width: 700px; }
+.card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px 24px; margin-bottom: 16px; }
+.head { display: flex; flex-wrap: wrap; gap: 8px 10px; align-items: center; margin-bottom: 10px; }
+.head h3 { font-size: 18px; font-weight: 800; flex: 1 1 320px; }
+.chip { font-size: 12px; font-weight: 700; padding: 3px 9px; border-radius: 99px; white-space: nowrap; }
+.high { background: var(--red2); color: var(--red); }
+.low { background: var(--amb2); color: var(--amb); }
+.ok { background: var(--acc2); color: var(--acc); }
+.tag { background: var(--gray2); color: var(--mute); }
+dl { display: grid; grid-template-columns: 130px 1fr; gap: 6px 14px; }
+dt { font-size: 14px; font-weight: 700; color: var(--mute); }
+dd { min-width: 0; overflow-wrap: anywhere; }
+code { font-family: "JetBrains Mono", Consolas, monospace; font-size: 13.5px; background: var(--gray2); padding: 1px 5px; border-radius: 5px; }
+pre { font-family: "JetBrains Mono", Consolas, monospace; font-size: 13.5px; background: var(--code); color: #e8ecef; padding: 14px 16px; border-radius: 10px; overflow-x: auto; margin-top: 12px; line-height: 1.5; }
+.cols { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+.cols .card { margin: 0; }
+.card h3 { font-size: 17px; font-weight: 800; margin-bottom: 6px; }
+.card ul { padding-left: 18px; }
+.card li { margin: 4px 0; }
+.note { border-left: 4px solid var(--acc); }
+table { width: 100%; border-collapse: collapse; font-size: 15px; }
+th { text-align: left; font-size: 13px; color: var(--mute); padding: 0 12px 8px 0; }
+td { padding: 10px 12px 10px 0; border-top: 1px solid var(--line); vertical-align: top; }
+td:last-child, th:last-child { padding-right: 0; }
+.scroll { overflow-x: auto; }
+.scroll table { min-width: 560px; }
+footer { padding: 28px 0 46px; color: var(--mute); font-size: 14px; }
+@media (max-width: 640px) { header { padding-top: 32px; } h1 { font-size: 28px; } dl { grid-template-columns: 1fr; gap: 2px 0; } dd { margin-bottom: 8px; } .card { padding: 18px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <p class="eyebrow">Junior AppSec · проверка веб-приложений и LLM</p>
+  <h1>Нахожу уязвимости, оцениваю реальный риск и проверяю исправление</h1>
+  <p class="sub">Сони Фридмо. Два года работал QA, теперь перехожу в безопасность приложений. Проверяю на своём сервисе и учебных стендах: только там, где есть разрешение. На этой странице то, что сделал руками.</p>
+  <p class="ct"><a href="https://t.me/fridmo_sony">Telegram: @fridmo_sony</a><a href="index.html">Всё портфолио</a></p>
+</header>
+
+<section>
+  <h2>Находки в своём сервисе</h2>
+  <p class="lead">Сервис HunterKitty: Telegram-бот и Mini App с ИИ-письмами. Проверял на локальной копии с отдельной базой и фальшивым токеном бота. Рабочий сервис не атаковал.</p>
+
+  <article class="card">
+    <div class="head"><h3>PI-01. Инъекция через вакансию: фишинговая ссылка в письме</h3><span class="chip high">Высокая</span><span class="chip low">Исправлено, ждёт ретеста</span><span class="chip tag">OWASP LLM01</span></div>
+    <dl>
+      <dt>Где</dt><dd>Генерация сопроводительного письма. Модель читает текст вакансии, а его может написать кто угодно.</dd>
+      <dt>Что подал</dt><dd>Вакансию, в которой спрятана просьба добавить ссылку <code>https://evil.example/apply</code>.</dd>
+      <dt>Что вышло</dt><dd>Модель вставила ссылку в конец письма. Сработало в 1 запуске из 5.</dd>
+      <dt>Чем опасно</dt><dd>Пользователь отправляет работодателю фишинговую ссылку от своего имени. 1 из 5 здесь не мало: у сервиса много вакансий и писем.</dd>
+      <dt>Исправление</dt><dd>Текст вакансии передаётся модели в отдельном теге как данные, а не как инструкции. Функция <code>sanitize_letter</code> вырезает из готового письма чужие ссылки и контакты.</dd>
+      <dt>Ретест</dt><dd>Запланирован отдельной серией прогонов: модель недетерминирована, одного запуска мало.</dd>
+    </dl>
+  </article>
+
+  <article class="card">
+    <div class="head"><h3>AUTH-02. Токен с датой из будущего не истекает</h3><span class="chip low">Низкая</span><span class="chip ok">Исправлено и проверено</span><span class="chip tag">API2</span></div>
+    <dl>
+      <dt>Где</dt><dd><code>validate_init_data</code>: проверка срока жизни подписанных данных Telegram Mini App.</dd>
+      <dt>Что подал</dt><dd>Правильно подписанную строку с <code>auth_date</code> на год вперёд.</dd>
+      <dt>Что вышло</dt><dd>Сервер принял её и вернул пользователя 111. Ожидался отказ.</dd>
+      <dt>Почему так</dt><dd>Проверка смотрит только в одну сторону. Для будущей даты возраст отрицательный, а это всегда меньше суток.</dd>
+      <dt>Оценка риска</dt><dd>Дата находится под подписью, поэтому поставить её может только тот, у кого есть токен бота. Но с токеном атакующему эта ошибка уже не нужна. Поэтому риск низкий, а исправление дешёвое: защита в глубину на случай утечки и смены ключа.</dd>
+      <dt>Ретест</dt><dd>Тест зелёный, добавлен постоянный тест в проект.</dd>
+    </dl>
+<pre>age = time.time() - auth_date
+if age &gt; max_age or age &lt; -CLOCK_SKEW_SECONDS:   # слишком старая или из будущего
+    return None</pre>
+  </article>
+
+  <article class="card">
+    <div class="head"><h3>AUTH-01. Подмена user_id в подписанных данных</h3><span class="chip ok">Защищено</span><span class="chip tag">Проверка гипотезы</span></div>
+    <p>Подписал данные за пользователя 111 и заменил id на 222. Сервер отклонил запрос в 5 попытках из 5. Отрицательный результат тоже записываю в отчёт: теперь это покрыто тестом и не сломается незаметно.</p>
+  </article>
+</section>
+
+<section>
+  <h2>Проверка платёжного сервиса</h2>
+  <p class="lead">Интеграция ЮKassa и Битрикс24. Проверял вживую, не только автотестами, плюс 16 автотестов на сценарии сбоев.</p>
+  <div class="card scroll">
+    <table>
+      <thead><tr><th>Сценарий</th><th>Риск</th><th>Результат</th></tr></thead>
+      <tbody>
+        <tr><td>Поддельное уведомление об оплате</td><td>Сделка станет оплаченной без денег</td><td>Отклонено: сервис проверяет платёж через API</td></tr>
+        <tr><td>Повторное уведомление</td><td>Двойной учёт оплаты</td><td>Повтор не меняет данные</td></tr>
+        <tr><td>Сервис выключен в момент оплаты</td><td>Потерянная оплата</td><td>ЮKassa повторила уведомление, оплата учтена после запуска</td></tr>
+        <tr><td>CRM или ЮKassa недоступны</td><td>Расхождение данных</td><td>Ошибка обрабатывается, стадия не откатывается, CRM обновляется при повторе</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="lead"><a href="crm-bitrix24/payments/">Описание и код сервиса</a></p>
+</section>
+
+<section>
+  <h2>Разборы лаб PortSwigger</h2>
+  <p class="lead">Каждая лаба оформлена как отчёт: где, что подал, что вернулось, почему, чем опасно, как исправить и как проверить.</p>
+  <div class="cols">
+    <div class="card"><div class="head"><span class="chip low">Low / Medium</span><span class="chip tag">CWE-204</span></div><h3>Перебор логинов по разным ответам</h3><p>Разный текст ошибки выдаёт существующие аккаунты. В той же лабе нашёл вторую проблему: нет защиты от подбора пароля (CWE-307).</p></div>
+    <div class="card"><div class="head"><span class="chip high">High</span><span class="chip tag">OWASP A07</span></div><h3>Обход 2FA</h3><p>Страница аккаунта открывается без ввода кода. Исправление: отдельный статус сессии до второго фактора и новая сессия после него.</p></div>
+    <div class="card"><div class="head"><span class="chip high">Critical</span><span class="chip tag">CWE-640</span></div><h3>Сломанный сброс пароля</h3><p>Токен не проверяется, а аккаунт берётся из поля запроса. Захват чужого аккаунта по одному логину. Исправление: искать пользователя только по токену.</p></div>
+  </div>
+  <div class="card note" style="margin-top:16px">
+    <h3>Как я работаю над ошибками</h3>
+    <p>Первый вывод по лабе со сбросом пароля оказался неверным: тест был грязным, менялись сразу два условия. Повторил с одной переменной и увидел, что токен не проверяется совсем. С тех пор правило простое: один тест, одна переменная, и сначала найти все места, откуда сервер может читать параметр.</p>
+  </div>
+</section>
+
+<section>
+  <h2>Инструменты и подход</h2>
+  <div class="cols">
+    <div class="card"><h3>Инструменты</h3><ul><li>Burp Suite: прокси, повтор и перебор запросов</li><li>pytest для тестов на безопасность</li><li>Ollama для локальных LLM</li><li>JavaScript; Python на уровне чтения кода и простых тестов</li></ul></div>
+    <div class="card"><h3>На что опираюсь</h3><ul><li>OWASP Top 10 и OWASP API Top 10</li><li>OWASP Top 10 для LLM</li><li>CWE для классификации находок</li></ul></div>
+    <div class="card"><h3>Правила</h3><ul><li>Только разрешённые цели</li><li>Риск оцениваю с учётом предусловий, а не по названию уязвимости</li><li>Находка закрыта, только когда прошёл ретест</li></ul></div>
+  </div>
+</section>
+
+<footer>
+  Сони Фридмо · Нови-Сад, Сербия, работаю удалённо · <a href="https://t.me/fridmo_sony">@fridmo_sony</a>. Подробные отчёты и тесты покажу на звонке.
+</footer>
+</div>
+</body>
+</html>

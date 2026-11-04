@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Сони Фридмо: портфолио</title>
-<meta name="description" content="QA и AI QA, техподдержка L2, внедрение CRM, интеграции и автоматизация, сайты">
+<meta name="description" content="Безопасность приложений и ИИ: AppSec, проверка LLM, AI QA. Также QA, внедрение CRM и интеграции">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root { --bg: #f6f7f5; --card: #fff; --ink: #1d2126; --mute: #5d646b; --line: #e3e6e2; --acc: #0f7a4f; --acc2: #e7f4ee; }
@@ -60,38 +60,32 @@ footer { padding: 40px 0 50px; color: var(--mute); font-size: 14px; }
   <img src="photo.jpg" alt="Сони Фридмо">
   <div>
     <h1>Сони Фридмо</h1>
-    <div class="roles">QA и AI QA · Техподдержка L2 · Внедрение CRM · Интеграции · Сайты</div>
-    <div class="ct">3 года в IT, финтех и цифровые продукты. Нови-Сад, работаю удалённо.</div>
+    <div class="roles">Безопасность приложений и ИИ: AppSec, LLM, AI QA</div>
+    <div class="ct">3 года в IT, 2 из них в QA. Сейчас перехожу в AppSec и проверку ИИ. Также внедрение CRM и интеграции. Нови-Сад, работаю удалённо.</div>
     <div class="ct"><a href="https://t.me/fridmo_sony">Telegram</a><a href="mailto:alexandrikuskos@gmail.com">alexandrikuskos@gmail.com</a><a href="https://github.com/sonyfrid">GitHub</a></div>
   </div>
 </header>
 </div>
 
 <nav><div class="wrap">
-  <a href="#product">Свой продукт</a><a href="#qa">QA и AI QA</a><a href="#support">Поддержка</a><a href="#crm">Внедрение CRM</a><a href="#integrations">Интеграции</a><a href="#web">Сайты</a>
+  <a href="#security">Безопасность и ИИ</a><a href="#qa">QA и AI QA</a><a href="#product">Свой продукт</a><a href="#support">Поддержка</a><a href="#crm">Внедрение CRM</a><a href="#integrations">Интеграции</a><a href="#web">Сайты</a>
 </div></nav>
 
 <div class="wrap">
 
-<section id="product">
-  <h2>Свой продукт: сервис поиска работы в Telegram</h2>
-  <p class="lead">Сделал сам от идеи до поддержки: собрал требования, продумал логику и дизайн, написал, протестировал, запустил на сервере и веду пользователей.</p>
+<section id="security">
+  <h2>Безопасность приложений и ИИ</h2>
+  <p class="lead">Нахожу уязвимости в веб-приложениях и LLM, оцениваю реальный риск и проверяю исправление. Работаю только на своём сервисе и учебных стендах.</p>
   <div class="card">
-    <span class="tag">Python</span><span class="tag">PostgreSQL</span><span class="tag">Telegram Bot + Mini App</span><span class="tag">Linux, systemd</span><span class="tag">pytest</span><span class="tag">ИИ</span>
-    <div class="nums">
-      <div><b>30+</b><span>сайтов-источников</span></div>
-      <div><b>~200</b><span>Telegram-каналов</span></div>
-      <div><b>10 000+</b><span>вакансий в день</span></div>
-      <div><b>~580</b><span>автотестов</span></div>
-    </div>
+    <span class="tag">AppSec</span><span class="tag">OWASP LLM</span><span class="tag">Burp Suite</span><span class="tag">pytest</span><span class="tag">PortSwigger</span>
+    <h3>Находки и разборы</h3>
     <ul>
-      <li>Собирает вакансии из десятков источников через API и парсинг, убирает дубли, рекламу и мошенников.</li>
-      <li>Подбор под человека: профессия, ключевые слова, исключения, зарплата, опыт, формат работы.</li>
-      <li>ИИ пишет сопроводительное письмо под конкретную вакансию.</li>
-      <li>Мониторинг источников, алерты о сбоях, логи, ночные бэкапы, автоподъём на сервере.</li>
+      <li>Инъекция через текст вакансии: модель вставляла фишинговую ссылку в письмо пользователя, в 1 запуске из 5. Закрыл изоляцией данных и фильтром ссылок на выходе.</li>
+      <li>Токен Telegram Mini App с датой из будущего не истекал. Исправил, добавил постоянный тест, обосновал низкий риск.</li>
+      <li>Платёжный сервис: вживую проверил поддельные и повторные уведомления и сбои ЮKassa и CRM.</li>
+      <li>Разборы лаб PortSwigger: перебор логинов, обход 2FA, сломанный сброс пароля.</li>
     </ul>
-    <div class="links"><a href="https://t.me/Jobradar_kittybot">Открыть в Telegram</a><a href="https://github.com/sonyfrid/job-aggregator-showcase">Описание на GitHub</a></div>
-    <div class="shots"><img src="img/app-feed.jpg" alt="Лента вакансий" loading="lazy"><img src="img/app-search-dark.jpg" alt="Настройка поиска" loading="lazy"><img src="img/app-vacancy.jpg" alt="Карточка вакансии" loading="lazy"></div>
+    <div class="links"><a href="security.html">Все находки и разборы</a></div>
   </div>
 </section>
 
@@ -115,6 +109,28 @@ footer { padding: 40px 0 50px; color: var(--mute); font-size: 14px; }
     <h3>Автотесты и тестовая документация</h3>
     <p>Фреймворк UI- и API-тестов для финтех-приложения: Page Object, проверки ключевых сценариев. Примеры артефактов: тест-кейсы, баг-репорты, чек-листы. Коллекция API-тестов в Postman с окружением.</p>
     <div class="links"><a href="https://github.com/sonyfrid/fintech-qa-automation">Автотесты Playwright</a><a href="https://github.com/sonyfrid/Examples-of-artifacts">Тест-кейсы и баг-репорты</a><a href="https://github.com/sonyfrid/testAPI">API-тесты Postman</a></div>
+  </div>
+</section>
+
+<section id="product">
+  <h2>Свой продукт: сервис поиска работы в Telegram</h2>
+  <p class="lead">Сделал сам от идеи до поддержки: собрал требования, продумал логику и дизайн, написал, протестировал, запустил на сервере и веду пользователей.</p>
+  <div class="card">
+    <span class="tag">Python</span><span class="tag">PostgreSQL</span><span class="tag">Telegram Bot + Mini App</span><span class="tag">Linux, systemd</span><span class="tag">pytest</span><span class="tag">ИИ</span>
+    <div class="nums">
+      <div><b>30+</b><span>сайтов-источников</span></div>
+      <div><b>~200</b><span>Telegram-каналов</span></div>
+      <div><b>10 000+</b><span>вакансий в день</span></div>
+      <div><b>~580</b><span>автотестов</span></div>
+    </div>
+    <ul>
+      <li>Собирает вакансии из десятков источников через API и парсинг, убирает дубли, рекламу и мошенников.</li>
+      <li>Подбор под человека: профессия, ключевые слова, исключения, зарплата, опыт, формат работы.</li>
+      <li>ИИ пишет сопроводительное письмо под конкретную вакансию.</li>
+      <li>Мониторинг источников, алерты о сбоях, логи, ночные бэкапы, автоподъём на сервере.</li>
+    </ul>
+    <div class="links"><a href="https://t.me/Jobradar_kittybot">Открыть в Telegram</a><a href="https://github.com/sonyfrid/job-aggregator-showcase">Описание на GitHub</a></div>
+    <div class="shots"><img src="img/app-feed.jpg" alt="Лента вакансий" loading="lazy"><img src="img/app-search-dark.jpg" alt="Настройка поиска" loading="lazy"><img src="img/app-vacancy.jpg" alt="Карточка вакансии" loading="lazy"></div>
   </div>
 </section>
 
