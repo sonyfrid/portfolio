@@ -91,7 +91,7 @@ footer { padding: 28px 0 46px; color: var(--mute); font-size: 14px; }
 <section>
   <h2>AI QA: тестирование LLM</h2>
   <div class="card">
-    <span class="tag">LLM</span><span class="tag">Python</span><span class="tag">Ollama</span><span class="tag">Prompt injection</span>
+    <span class="tag">LLM</span><span class="tag">Python</span><span class="tag">Ollama</span><span class="tag">Prompt injection</span><span class="tag">RAG</span><span class="tag">promptfoo</span>
     <h3>Тестирование ИИ-ассистента поддержки</h3>
     <p>40 тест-кейсов в 8 группах: факты, галлюцинации, prompt injection, утечка промпта, обходы, персональные данные, тон, язык и стабильность. Сравнил три версии ассистента.</p>
     <div class="nums"><div><b>30 → 38</b><span>из 40 кейсов</span></div><div><b>13</b><span>багов найдено</span></div><div><b>16 из 28</b><span>падений оказались ошибками тестов</span></div></div>
@@ -99,6 +99,7 @@ footer { padding: 28px 0 46px; color: var(--mute); font-size: 14px; }
       <li>Промпт утекал через перевод, пересказ, стихи и «повтори текст выше». Закрыл фильтром на выходе.</li>
       <li>Проверил самого ИИ-судью: из 12 найденных им «выдумок» верными были только 2.</li>
       <li>Честно оставил два незакрытых кейса и описал, что с ними делать.</li>
+      <li><b>RAG и promptfoo:</b> поиск по базе и ответы только по найденному. Защищённая версия прошла 9 из 10 кейсов, простая 4 из 10. Проверил indirect prompt injection через вредный документ: ложный факт всё ещё проходит, это описано в отчёте.</li>
     </ul>
     <div class="links"><a href="https://github.com/sonyfrid/ai-qa-support-bot">Код, кейсы и отчёт</a></div>
   </div>
