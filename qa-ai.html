@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Сони Фридмо: QA Automation и AI QA</title>
-<meta name="description" content="QA Automation на Playwright и Python, тестирование LLM и ИИ-ассистентов, безопасность приложений.">
+<meta name="description" content="QA Automation на Playwright и Python, тестирование LLM, финтех и платежи, безопасность приложений.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
@@ -43,8 +43,8 @@ footer { padding: 28px 0 46px; color: var(--mute); font-size: 14px; }
   <img src="photo.jpg" alt="Сони Фридмо">
   <div>
     <h1>Сони Фридмо</h1>
-    <div class="roles">QA Automation (Playwright, Python) · AI QA · Безопасность</div>
-    <div class="sub">3 года в IT: финтех, крипта и цифровые продукты. Нови-Сад, работаю удалённо. Английский: B1 разговорный, B2-C1 на чтение.</div>
+    <div class="roles">QA Automation (Playwright, Python) · AI QA · Финтех и платежи</div>
+    <div class="sub">3 года в IT: финтех, платежи, крипта. Нови-Сад, работаю удалённо. Английский: B1 разговорный, B2-C1 на чтение.</div>
     <div class="ct"><a href="https://t.me/fridmo_sony">Telegram: @fridmo_sony</a><a href="https://github.com/sonyfrid">GitHub</a><a href="https://habr.com/ru/articles/1091508/">Статья на Хабре</a></div>
   </div>
 </header>
@@ -62,6 +62,29 @@ footer { padding: 28px 0 46px; color: var(--mute); font-size: 14px; }
     <h3>Стартап «Вот бы!»: тестирование</h3>
     <p>Проверил сайт как гость и как зарегистрированный пользователь, на компьютере и телефоне. Написал проверки на Playwright: все страницы, ошибки консоли, битые ссылки, формы и скорость. Подготовил отчёт со скриншотами и задачи для команды в GitLab.</p>
     <div class="links"><a href="https://votby.ru">votby.ru</a></div>
+  </div>
+</section>
+
+<section>
+  <h2>Финтех и платежи</h2>
+  <div class="card">
+    <span class="tag">Платежи</span><span class="tag">Вебхуки</span><span class="tag">Идемпотентность</span><span class="tag">pytest</span>
+    <h3>Платёжный сервис на ЮKassa: проверка вживую и 16 автотестов</h3>
+    <p>Полный путь оплаты: ссылка на платёж, вебхук, смена статуса, выгрузка в учёт и сверка.</p>
+    <ul>
+      <li><b>Безопасность:</b> поддельное уведомление отклоняется, статус платежа сервис перепроверяет через API.</li>
+      <li><b>Идемпотентность:</b> повторное уведомление не создаёт двойной учёт.</li>
+      <li><b>Отказы:</b> карта отклонена, затем оплата по той же ссылке проходит.</li>
+      <li><b>Сбои:</b> платёжный провайдер недоступен, недоступна внутренняя система, сервис выключен в момент оплаты. Платёж не теряется: ЮKassa повторила уведомление после запуска.</li>
+    </ul>
+  </div>
+  <div class="card">
+    <span class="tag">Крипта</span><span class="tag">P2P</span><span class="tag">Postman</span><span class="tag">Kibana</span>
+    <h3>Коммерческий опыт в финтехе</h3>
+    <ul>
+      <li><b>Tezro (Ilink):</b> криптокошелёк, P2P-маркетплейс и мессенджер. Тестирование перед релизами, регрессия, API-коллекции в Postman, разбор причин по логам в Kibana.</li>
+      <li><b>Cubux, FinKoper (Laboratoria Modul Soft):</b> финансовые продукты. Веб и мобильные приложения, REST API, проверка данных в SQL, автотесты на Playwright, Jira и TestRail.</li>
+    </ul>
   </div>
 </section>
 
@@ -109,7 +132,7 @@ footer { padding: 28px 0 46px; color: var(--mute); font-size: 14px; }
 <section>
   <h2>Опыт и навыки</h2>
   <div class="cols">
-    <div class="card"><h3>Опыт</h3><ul><li><b>Laboratoria Modul Soft</b>: Cubux, FinKoper, финансовые продукты</li><li><b>Ilink</b>: Tezro, криптокошелёк, P2P-маркетплейс, мессенджер</li></ul></div>
+    <div class="card"><h3>Опыт</h3><ul><li><b>Laboratoria Modul Soft</b>, QA Engineer, 11.2024 - 09.2026</li><li><b>Ilink</b>, QA Engineer, 11.2023 - 11.2024</li><li><b>HunterKitty</b>, свой продукт, 2026 - сейчас</li></ul></div>
     <div class="card"><h3>Автоматизация</h3><ul><li>Playwright, TypeScript, Python, pytest</li><li>Postman, Newman, SQL, REST API</li><li>Kibana, DevTools, Jira, TestRail, Git</li></ul></div>
     <div class="card"><h3>Понимаю проект целиком</h3><ul><li>JavaScript, TypeScript, Node.js, React</li><li>PostgreSQL, Linux</li><li>До тестирования учился на Fullstack JS</li></ul></div>
   </div>
