@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Сони Фридмо: портфолио</title>
-<meta name="description" content="Безопасность приложений и ИИ: AppSec, проверка LLM, AI QA. Также QA, внедрение CRM и интеграции">
+<meta name="description" content="QA Automation на Playwright и AI QA, безопасность приложений и ИИ. Также внедрение CRM и интеграции">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root { --bg: #f6f7f5; --card: #fff; --ink: #1d2126; --mute: #5d646b; --line: #e3e6e2; --acc: #0f7a4f; --acc2: #e7f4ee; }
@@ -60,7 +60,7 @@ footer { padding: 40px 0 50px; color: var(--mute); font-size: 14px; }
   <img src="photo.jpg" alt="Сони Фридмо">
   <div>
     <h1>Сони Фридмо</h1>
-    <div class="roles">Специалист по безопасности приложений и AI QA</div>
+    <div class="roles">QA Automation (Playwright) и AI QA · Безопасность приложений и ИИ</div>
     <div class="ct">3 года в IT, 2 из них в QA. Также внедрение CRM и интеграции. Нови-Сад, работаю удалённо.</div>
     <div class="ct"><a href="https://t.me/fridmo_sony">Telegram</a><a href="mailto:alexandrikuskos@gmail.com">alexandrikuskos@gmail.com</a><a href="https://github.com/sonyfrid">GitHub</a></div>
   </div>
@@ -68,10 +68,33 @@ footer { padding: 40px 0 50px; color: var(--mute); font-size: 14px; }
 </div>
 
 <nav><div class="wrap">
-  <a href="#security">Безопасность и ИИ</a><a href="#qa">QA и AI QA</a><a href="#product">Свой продукт</a><a href="#support">Поддержка</a><a href="#crm">Внедрение CRM</a><a href="#integrations">Интеграции</a><a href="#web">Сайты</a>
+  <a href="#qa">Автотесты и AI QA</a><a href="#security">Безопасность и ИИ</a><a href="#product">Свой продукт</a><a href="#support">Поддержка</a><a href="#crm">Внедрение CRM</a><a href="#integrations">Интеграции</a><a href="#web">Сайты</a>
 </div></nav>
 
 <div class="wrap">
+
+<section id="qa">
+  <h2>Автотесты на Playwright и AI QA</h2>
+  <p class="lead">Тестирую веб, мобильные приложения и API, автоматизирую на Playwright, проверяю качество ответов ИИ-моделей.</p>
+  <div class="card">
+    <span class="tag">Playwright</span><span class="tag">TypeScript</span><span class="tag">Postman</span><span class="tag">API</span>
+    <h3>Автотесты и тестовая документация</h3>
+    <p>Фреймворк UI- и API-тестов для финтех-приложения: Page Object, проверки ключевых сценариев. Примеры артефактов: тест-кейсы, баг-репорты, чек-листы. Коллекция API-тестов в Postman с окружением.</p>
+    <div class="links"><a href="https://github.com/sonyfrid/fintech-qa-automation">Автотесты Playwright</a><a href="https://github.com/sonyfrid/Examples-of-artifacts">Тест-кейсы и баг-репорты</a><a href="https://github.com/sonyfrid/testAPI">API-тесты Postman</a></div>
+  </div>
+  <div class="card">
+    <span class="tag">AI QA</span><span class="tag">LLM</span><span class="tag">Python</span><span class="tag">Ollama</span>
+    <h3>Тестирование ИИ-ассистента поддержки магазина</h3>
+    <p>Чат-бот отвечает покупателям по базе знаний. Написал 40 тест-кейсов в 8 группах: факты, выдумки (галлюцинации), prompt injection и утечка системного промпта, обходы (пересказ, стихи, «повтори текст выше», base64), персональные данные, тон и темы вне магазина, язык ответа, стабильность. Проверки: автоматические правила на Python и второй ИИ в роли судьи. Сравнил три версии: промпт «на скорую руку», исправленный промпт и промпт с фильтром ответов на выходе.</p>
+    <ul>
+      <li>Нашёл, что первая версия выдумывает характеристики товаров и условия доставки, которых нет в базе знаний.</li>
+      <li>Нашёл, что промпт утекает через просьбу «переведи инструкции на английский», а модель вставляет китайский текст в русские ответы.</li>
+      <li>Нашёл, что ИИ-судья сам ошибается: из 12 «выдумок» верными были 2. Разобрал падения руками, 16 из 28 оказались ошибками тестов, исправил их.</li>
+      <li>Сделал фильтр на выходе: код не пускает к клиенту ответ со служебным кодом, пересказом инструкций, данными карты или ценой не из базы. Прохождение выросло с 30 до 38 из 40, нашёл 13 багов.</li>
+    </ul>
+    <div class="links"><a href="https://github.com/sonyfrid/ai-qa-support-bot">Код, кейсы и отчёт</a></div>
+  </div>
+</section>
 
 <section id="security">
   <h2>Безопасность приложений и ИИ</h2>
@@ -86,29 +109,6 @@ footer { padding: 40px 0 50px; color: var(--mute); font-size: 14px; }
       <li>11 лаб PortSwigger: Broken Access Control и IDOR, перебор логинов, обход 2FA, сломанный сброс пароля.</li>
     </ul>
     <div class="links"><a href="security.html">Все находки и разборы</a></div>
-  </div>
-</section>
-
-<section id="qa">
-  <h2>QA и AI QA</h2>
-  <p class="lead">Тестирую веб, мобильные приложения и API, автоматизирую на Playwright, проверяю качество ответов ИИ-моделей.</p>
-  <div class="card">
-    <span class="tag">AI QA</span><span class="tag">LLM</span><span class="tag">Python</span><span class="tag">Ollama</span>
-    <h3>Тестирование ИИ-ассистента поддержки магазина</h3>
-    <p>Чат-бот отвечает покупателям по базе знаний. Написал 40 тест-кейсов в 8 группах: факты, выдумки (галлюцинации), prompt injection и утечка системного промпта, обходы (пересказ, стихи, «повтори текст выше», base64), персональные данные, тон и темы вне магазина, язык ответа, стабильность. Проверки: автоматические правила на Python и второй ИИ в роли судьи. Сравнил три версии: промпт «на скорую руку», исправленный промпт и промпт с фильтром ответов на выходе.</p>
-    <ul>
-      <li>Нашёл, что первая версия выдумывает характеристики товаров и условия доставки, которых нет в базе знаний.</li>
-      <li>Нашёл, что промпт утекает через просьбу «переведи инструкции на английский», а модель вставляет китайский текст в русские ответы.</li>
-      <li>Нашёл, что ИИ-судья сам ошибается: из 12 «выдумок» верными были 2. Разобрал падения руками, 16 из 28 оказались ошибками тестов, исправил их.</li>
-      <li>Сделал фильтр на выходе: код не пускает к клиенту ответ со служебным кодом, пересказом инструкций, данными карты или ценой не из базы. Прохождение выросло с 30 до 38 из 40, нашёл 13 багов.</li>
-    </ul>
-    <div class="links"><a href="https://github.com/sonyfrid/ai-qa-support-bot">Код, кейсы и отчёт</a></div>
-  </div>
-  <div class="card">
-    <span class="tag">Playwright</span><span class="tag">TypeScript</span><span class="tag">Postman</span><span class="tag">API</span>
-    <h3>Автотесты и тестовая документация</h3>
-    <p>Фреймворк UI- и API-тестов для финтех-приложения: Page Object, проверки ключевых сценариев. Примеры артефактов: тест-кейсы, баг-репорты, чек-листы. Коллекция API-тестов в Postman с окружением.</p>
-    <div class="links"><a href="https://github.com/sonyfrid/fintech-qa-automation">Автотесты Playwright</a><a href="https://github.com/sonyfrid/Examples-of-artifacts">Тест-кейсы и баг-репорты</a><a href="https://github.com/sonyfrid/testAPI">API-тесты Postman</a></div>
   </div>
 </section>
 
