@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Сони Фридмо: AppSec и LLM</title>
+<title>Сони Фридмо: AppSec и AI QA</title>
 <meta name="description" content="Портфолио по безопасности веб-приложений и LLM: находки с воспроизведением, оценкой риска, исправлением и ретестом.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -55,9 +55,9 @@ footer { padding: 28px 0 46px; color: var(--mute); font-size: 14px; }
 <div class="wrap">
 
 <header>
-  <p class="eyebrow">Junior AppSec · проверка веб-приложений и LLM</p>
+  <p class="eyebrow">Специалист по безопасности приложений и AI QA</p>
   <h1>Нахожу уязвимости, оцениваю реальный риск и проверяю исправление</h1>
-  <p class="sub">Сони Фридмо. Два года работал QA, теперь перехожу в безопасность приложений. Проверяю на своём сервисе и учебных стендах: только там, где есть разрешение. На этой странице то, что сделал руками.</p>
+  <p class="sub">Сони Фридмо. Два года в QA, специализируюсь на безопасности приложений и проверке ИИ. Работаю на своём сервисе и учебных стендах: только там, где есть разрешение. На этой странице то, что сделал руками.</p>
   <p class="ct"><a href="https://t.me/fridmo_sony">Telegram: @fridmo_sony</a><a href="index.html">Всё портфолио</a></p>
 </header>
 
@@ -116,14 +116,34 @@ if age &gt; max_age or age &lt; -CLOCK_SKEW_SECONDS:   # слишком стар
 </section>
 
 <section>
-  <h2>Разборы лаб PortSwigger</h2>
+  <h2>Разборы лаб PortSwigger: 11 лаб</h2>
   <p class="lead">Каждая лаба оформлена как отчёт: где, что подал, что вернулось, почему, чем опасно, как исправить и как проверить.</p>
   <div class="cols">
     <div class="card"><div class="head"><span class="chip low">Low / Medium</span><span class="chip tag">CWE-204</span></div><h3>Перебор логинов по разным ответам</h3><p>Разный текст ошибки выдаёт существующие аккаунты. В той же лабе нашёл вторую проблему: нет защиты от подбора пароля (CWE-307).</p></div>
     <div class="card"><div class="head"><span class="chip high">High</span><span class="chip tag">OWASP A07</span></div><h3>Обход 2FA</h3><p>Страница аккаунта открывается без ввода кода. Исправление: отдельный статус сессии до второго фактора и новая сессия после него.</p></div>
     <div class="card"><div class="head"><span class="chip high">Critical</span><span class="chip tag">CWE-640</span></div><h3>Сломанный сброс пароля</h3><p>Токен не проверяется, а аккаунт берётся из поля запроса. Захват чужого аккаунта по одному логину. Исправление: искать пользователя только по токену.</p></div>
   </div>
+  <div class="card scroll" style="margin-top:16px">
+    <div class="head"><h3>Broken Access Control и IDOR: 8 лаб</h3><span class="chip tag">OWASP A01</span></div>
+    <table>
+      <thead><tr><th>Находка</th><th>Класс</th><th>Риск</th><th>Как чинить</th></tr></thead>
+      <tbody>
+        <tr><td>Админка открыта без входа, путь раскрыт в robots.txt</td><td>Вертикальный BAC</td><td><span class="chip high">Critical</span></td><td>Проверять роль на сервере</td></tr>
+        <tr><td>Адрес админки утёк в клиентском JS</td><td>Вертикальный BAC</td><td><span class="chip high">Critical</span></td><td>Проверка на клиенте не защита</td></tr>
+        <tr><td>Роль берётся из куки</td><td>Вертикальный BAC</td><td><span class="chip high">High</span></td><td>Роль только из серверной сессии</td></tr>
+        <tr><td>Роль меняется лишним полем в профиле</td><td>Mass assignment</td><td><span class="chip high">High / Critical</span></td><td>Белый список полей</td></tr>
+        <tr><td>Чужой аккаунт и API-ключ по id в запросе</td><td>IDOR</td><td><span class="chip high">High</span></td><td>Проверять владельца на сервере</td></tr>
+        <tr><td>GUID жертвы утёк в блоге</td><td>IDOR</td><td><span class="chip high">High</span></td><td>UUID это не контроль доступа</td></tr>
+        <tr><td>API-ключ в теле ответа с редиректом</td><td>IDOR и утечка</td><td><span class="chip high">High</span></td><td>Обрывать обработку до рендера</td></tr>
+        <tr><td>Пароль администратора в поле страницы</td><td>IDOR</td><td><span class="chip high">Critical</span></td><td>Секреты не отправлять на клиент</td></tr>
+      </tbody>
+    </table>
+  </div>
   <div class="card note" style="margin-top:16px">
+    <h3>Главный вывод по доступу</h3>
+    <p>Крепкая аутентификация не гарантирует авторизацию: подменить себя нельзя, а дотянуться до чужого объекта можно. Настоящий фикс один: проверка владельца и роли на сервере на каждый запрос.</p>
+  </div>
+  <div class="card note">
     <h3>Как я работаю над ошибками</h3>
     <p>Первый вывод по лабе со сбросом пароля оказался неверным: тест был грязным, менялись сразу два условия. Повторил с одной переменной и увидел, что токен не проверяется совсем. С тех пор правило простое: один тест, одна переменная, и сначала найти все места, откуда сервер может читать параметр.</p>
   </div>
