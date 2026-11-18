@@ -50,7 +50,25 @@ footer { padding: 28px 0 46px; color: var(--mute); font-size: 14px; }
 </header>
 
 <section>
-  <h2>Автотесты на Playwright</h2>
+  <h2>Автотесты: веб, API и мобилка</h2>
+  <div class="card">
+    <span class="tag">Java</span><span class="tag">REST Assured</span><span class="tag">Selenide</span><span class="tag">JUnit 5</span><span class="tag">Allure</span>
+    <h3>Автотесты Википедии на Java</h3>
+    <p>22 API-теста на REST Assured с проверкой ответов по JSON-схемам и 10 UI-тестов на Selenide с Page Object, включая мобильную версию. Параметризованные тесты JUnit 5, отчёт Allure, прогон в GitHub Actions.</p>
+    <div class="links"><a href="https://github.com/sonyfrid/wikipedia-java-autotests">Код на GitHub</a></div>
+  </div>
+  <div class="card">
+    <span class="tag">Appium</span><span class="tag">WebdriverIO</span><span class="tag">Maestro</span><span class="tag">Android</span><span class="tag">GitHub Actions</span>
+    <h3>Мобильные автотесты реального Android-приложения</h3>
+    <p>Приложение Википедии: 19 тестов на Appium и 5 сценариев на Maestro, прогон на Android-эмуляторе в GitHub Actions, отчёт Allure. Разобрал плавающие падения: порядок хуков, нестабильные экраны онбординга.</p>
+    <div class="links"><a href="https://github.com/sonyfrid/android-mobile-autotests">Код на GitHub</a></div>
+  </div>
+  <div class="card">
+    <span class="tag">Playwright</span><span class="tag">JavaScript</span><span class="tag">API</span><span class="tag">Telegram Mini App</span>
+    <h3>E2E и API-тесты Telegram Mini App</h3>
+    <p>39 тестов своего продукта HunterKitty на отдельном стенде: подпись данных Telegram, проверки авторизации и доступа к чужим данным (IDOR), сценарии на двух телефонах, Page Object, сброс тестовых данных.</p>
+    <div class="links"><a href="https://github.com/sonyfrid/hunterkitty-e2e">Код на GitHub</a></div>
+  </div>
   <div class="card">
     <span class="tag">Playwright</span><span class="tag">TypeScript</span><span class="tag">Postman</span><span class="tag">CI/CD</span>
     <h3>Фреймворк UI- и API-тестов на демо-банке Parabank</h3>
@@ -134,7 +152,7 @@ footer { padding: 28px 0 46px; color: var(--mute); font-size: 14px; }
   <h2>Опыт и навыки</h2>
   <div class="cols">
     <div class="card"><h3>Опыт</h3><ul><li><b>Laboratoria Modul Soft</b>, QA Engineer, 11.2024 - 09.2026</li><li><b>Ilink</b>, QA Engineer, 11.2023 - 11.2024</li><li><b>HunterKitty</b>, свой продукт, 2026 - сейчас</li></ul></div>
-    <div class="card"><h3>Автоматизация</h3><ul><li>Playwright, TypeScript, Python, pytest</li><li>Postman, Newman, SQL, REST API</li><li>Kibana, DevTools, Jira, TestRail, Git</li></ul></div>
+    <div class="card"><h3>Автоматизация</h3><ul><li>Java, JavaScript/TypeScript, Python</li><li>Playwright, Selenium, JUnit, TestNG, pytest, Appium, Maestro, Allure</li><li>REST, SOAP, gRPC, Swagger, Postman, SQL, Kafka, RabbitMQ</li><li>GitHub Actions, GitLab CI, Jenkins, Docker, Kubernetes, JMeter</li><li>Kibana, Charles, DevTools, Jira, TestRail, Git</li></ul></div>
     <div class="card"><h3>Понимаю проект целиком</h3><ul><li>JavaScript, TypeScript, Node.js, React</li><li>PostgreSQL, Linux</li><li>До тестирования учился на Fullstack JS</li></ul></div>
   </div>
 </section>
