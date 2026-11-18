@@ -66,6 +66,15 @@ footer { padding: 28px 0 46px; color: var(--mute); font-size: 14px; }
   <p class="lead">Сервис HunterKitty: Telegram-бот и Mini App с ИИ-письмами. Проверял на локальной копии с отдельной базой и фальшивым токеном бота. Рабочий сервис не атаковал.</p>
 
   <article class="card">
+    <div class="head"><h3>Полный разбор: 10 находок, демо и тесты</h3><span class="chip ok">Все исправлены</span><span class="chip tag">OWASP Top 10</span><span class="chip tag">API Top 10</span><span class="chip tag">LLM Top 10</span></div>
+    <dl>
+      <dt>Что внутри</dt><dd>Prompt injection, SSRF через редиректы, гонка на лимите, захват привилегий через ник, ссылки <code>javascript:</code>, CSP и ещё четыре находки. Для каждой: риск по CVSS, исправление и тест-регрессия.</dd>
+      <dt>Как проверить</dt><dd>Для каждой находки уязвимая и исправленная версия кода, тесты на pytest и node:test, прогон в GitHub Actions.</dd>
+      <dt>Код</dt><dd><a href="https://github.com/sonyfrid/hunterkitty-security-review">github.com/sonyfrid/hunterkitty-security-review</a></dd>
+    </dl>
+  </article>
+
+  <article class="card">
     <div class="head"><h3>PI-01. Инъекция через вакансию: фишинговая ссылка в письме</h3><span class="chip high">Высокая</span><span class="chip low">Исправлено, ждёт ретеста</span><span class="chip tag">OWASP LLM01</span></div>
     <dl>
       <dt>Где</dt><dd>Генерация сопроводительного письма. Модель читает текст вакансии, а его может написать кто угодно.</dd>
